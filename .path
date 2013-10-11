@@ -1,0 +1,8 @@
+PATH=$HOME/bin:$PATH
+PATH=/usr/local/share/npm/bin:$PATH
+PATH=/Applications/acquia-drupal/drush:$PATH
+PATH=/Applications/acquia-drupal/mysql/bin:$PATH
+PATH=/Applications/MAMP/Library/bin:$PATH
+PATH=/Applications/MAMP/bin/php/php5.4.10/bin:$PATH
+PATH=$HOME/boris/bin:$PATH
+PATH=/usr/local/sbin:$PATH
