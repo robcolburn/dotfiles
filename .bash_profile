@@ -37,3 +37,5 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
+[ -f ~/.drush-completion.bash ] && source ~/.drush-completion.bash
