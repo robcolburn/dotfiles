@@ -17,6 +17,8 @@
 	c = clone --recursive
 	# Commit all changes
 	ca = !git add -A && git commit -av
+	# Re-Checkout Branch from remote
+	reco = "!f() { git checkout -D $1; git checkout -b $1 $2/$1; }; f"
 	# Switch to a branch, creating it if necessary
 	go = checkout -B
 	switch = checkout -B
