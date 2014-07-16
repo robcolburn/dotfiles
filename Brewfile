@@ -18,6 +18,8 @@ install findutils
 install gnu-sed --default-names
 # Install Bash 4
 install bash
+# Install Bash completion
+install bash-completion
 
 # Install wget with IRI support
 install wget --enable-iri
