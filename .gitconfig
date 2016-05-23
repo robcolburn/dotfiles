@@ -17,17 +17,25 @@
 	c = clone --recursive
 	# Commit all changes
 	ca = !git add -A && git commit -av
+	# Add a GitHub remote, based on origin pattern 
+	friend = !"f() { LOCAL o=$(git remote get-url origin); git remote add $1 ${o/com\\/*\\/com\\/$1\\/} }; f"
+	# Fixup
+	fixup = !export GIT_EDITOR=true && git commit --fixup=HEAD && git rebase -i --autosquash HEAD~2
+	# Checkout
+	co = checkout
+	# Remove branches that have already been merged
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 	# Re-Checkout Branch from remote
-	reco = "!f() { git checkout -D $1; git checkout -b $1 $2/$1; }; f"
-	# Switch to a branch, creating it if necessary
-	go = checkout -B
-	switch = checkout -B
+	reco = "!f() { local R=(${1//[\\/:]/ }); if git show-ref -q --verify refs/heads/${R[1]}; then git branch -D ${R[1]}; fi; git fetch ${R[0]}; git checkout -b ${R[1]} ${R[0]}/${R[1]}; }; f"
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+	# Download and apply a patch
+	amr = "!f() { wget -q -O - $1 | git am; }; f"
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
 	# Find branches containing commit
@@ -47,6 +55,9 @@
 	# PP
 	in = pull --rebase origin
 	out = push origin
+	lastchange = log -p --follow -n 1
+	# Work in Progress, just do it
+	wip = commit -am "WIP" --no-verify
 
 [apply]
 	# Detect whitespace errors when applying a patch
