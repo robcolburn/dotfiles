@@ -102,5 +102,11 @@ brew install vbindiff
 brew install webkit2png
 brew install zopfli
 
+brew install cask
+# Quick look
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
+
+
+
 # Remove outdated versions from the cellar.
 brew cleanup
